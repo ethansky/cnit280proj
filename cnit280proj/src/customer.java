@@ -1,4 +1,4 @@
-public class customer {
+public class Customer {
     private String id;
     private String fname;
     private String lname;
@@ -7,7 +7,7 @@ public class customer {
     private String phone;
     private String email;
 
-    public customer(String id, String fname, String lname, String address, String joindate, String phone, String email) {
+    public Customer(String id, String fname, String lname, String address, String joindate, String phone, String email) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;

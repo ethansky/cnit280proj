@@ -1,4 +1,4 @@
-public class invoice {
+public class Invoice {
     private String id;
     private String supplier;
     private String receivedate;
@@ -7,7 +7,7 @@ public class invoice {
     private String status;
 
 
-    public invoice(String id, String supplier, String receivedate, String duedate, double amount, String status) {
+    public Invoice(String id, String supplier, String receivedate, String duedate, double amount, String status) {
         this.id = id;
         this.supplier = supplier;
         this.receivedate = receivedate;

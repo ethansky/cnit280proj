@@ -1,4 +1,4 @@
-public class employee {
+public class Employee {
     private String id;
     private String fname;
     private String lname;
@@ -12,7 +12,7 @@ public class employee {
     private String hqid;
 
 
-    public employee(String id, String fname, String lname, String phone, String hiredate, String email, String address, String departmentid, String storeid, String warehouseid, String hqid) {
+    public Employee(String id, String fname, String lname, String phone, String hiredate, String email, String address, String departmentid, String storeid, String warehouseid, String hqid) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
