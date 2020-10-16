@@ -28,19 +28,19 @@ public class Invoice {
         this.supplier = supplier;
     }
 
-    public String getReceivedate() {
+    public String getReceiveDate() {
         return this.receivedate;
     }
 
-    public void setReceivedate(String receivedate) {
+    public void setReceiveDate(String receivedate) {
         this.receivedate = receivedate;
     }
 
-    public String getDuedate() {
+    public String getDueDate() {
         return this.duedate;
     }
 
-    public void setDuedate(String duedate) {
+    public void setDueDate(String duedate) {
         this.duedate = duedate;
     }
 
@@ -56,8 +56,21 @@ public class Invoice {
         return this.status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void payInvoice() {
+        this.status = "Paid";
+    }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + id + "'" +
+            ", supplier='" + supplier + "'" +
+            ", receivedate='" + receivedate + "'" +
+            ", duedate='" + duedate + "'" +
+            ", amount='" + amount + "'" +
+            ", status='" + status + "'" +
+            "}";
     }
 
 }
