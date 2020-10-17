@@ -70,6 +70,7 @@ public class ViewInvoices extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Invoices");
+        setResizable(false);
 
         invoice_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         invoice_list.setValueIsAdjusting(true);

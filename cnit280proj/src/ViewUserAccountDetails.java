@@ -51,6 +51,7 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
         cust_email = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         cust_id_lbl.setText("Customer ID");
 

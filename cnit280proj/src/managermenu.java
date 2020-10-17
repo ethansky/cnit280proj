@@ -27,8 +27,10 @@ public class ManagerMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         view_invoices_btn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         view_invoices_btn.setText("View Invoices");
         view_invoices_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -37,21 +39,32 @@ public class ManagerMenu extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Compare Supplier Products");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(241, 241, 241)
+                .addGap(51, 51, 51)
                 .addComponent(view_invoices_btn)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(view_invoices_btn)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(view_invoices_btn)
+                    .addComponent(jButton1))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
@@ -62,6 +75,10 @@ public class ManagerMenu extends javax.swing.JFrame {
         frame.setVisible(true);
 //        this.setVisible(false);
     }//GEN-LAST:event_viewinvoicebuttonpressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,6 +117,7 @@ public class ManagerMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton view_invoices_btn;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,7 @@ public class CustomerMenu extends javax.swing.JFrame {
         edit_account_details_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         view_account_details_btn.setText("View Account Details");
         view_account_details_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -52,20 +53,20 @@ public class CustomerMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(53, 53, 53)
                 .addComponent(view_account_details_btn)
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addComponent(edit_account_details_btn)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(view_account_details_btn)
                     .addComponent(edit_account_details_btn))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
