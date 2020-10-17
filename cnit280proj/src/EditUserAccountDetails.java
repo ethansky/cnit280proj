@@ -9,12 +9,19 @@
  * @author Ethan - God Tier
  */
 public class EditUserAccountDetails extends javax.swing.JFrame {
+    private Customer cust;
 
     /**
      * Creates new form EditUserAccountDetails
      */
-    public EditUserAccountDetails() {
+    public EditUserAccountDetails(Customer cust) {
         initComponents();
+        this.cust = cust;       
+        cust_fname.setText(cust.getFname());
+        cust_lname.setText(cust.getLname());
+        cust_addr.setText(cust.getAddress());
+        cust_phone.setText(cust.getPhone());
+        cust_email.setText(cust.getEmail());
     }
 
     /**
@@ -36,6 +43,8 @@ public class EditUserAccountDetails extends javax.swing.JFrame {
         cust_addr = new javax.swing.JTextField();
         cust_phone = new javax.swing.JTextField();
         cust_email = new javax.swing.JTextField();
+        save_btn = new javax.swing.JButton();
+        dontsave_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,6 +60,20 @@ public class EditUserAccountDetails extends javax.swing.JFrame {
 
         cust_fname.setColumns(1);
 
+        save_btn.setText("Save");
+        save_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_btnActionPerformed(evt);
+            }
+        });
+
+        dontsave_btn.setText("Don't Save");
+        dontsave_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dontsave_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,9 +88,15 @@ public class EditUserAccountDetails extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(save_btn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dontsave_btn))
                     .addComponent(cust_phone, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cust_email, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cust_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cust_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(cust_lname)
                     .addComponent(cust_addr))
                 .addGap(55, 55, 55))
@@ -95,46 +124,78 @@ public class EditUserAccountDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(cust_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(save_btn)
+                    .addComponent(dontsave_btn))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
+        if (!cust_fname.getText().equals(cust.getFname())){
+            cust.setFname(cust_fname.getText());
+            cust_fname.setText(cust.getFname());
         }
-        //</editor-fold>
+        if (!cust_lname.getText().equals(cust.getLname())){
+            cust.setLname(cust_lname.getText());
+            cust_lname.setText(cust.getLname());
+        }
+        if (!cust_addr.getText().equals(cust.getAddress())){
+            cust.setAddress(cust_addr.getText());
+            cust_addr.setText(cust.getAddress());
+        }
+        if (!cust_phone.getText().equals(cust.getPhone())){
+            cust.setPhone(cust_phone.getText());
+            cust_phone.setText(cust.getPhone());
+        }
+        if (!cust_email.getText().equals(cust.getEmail())){
+            cust.setEmail(cust_email.getText());
+            cust_email.setText(cust.getEmail());
+        }
+        dispose();
+    }//GEN-LAST:event_save_btnActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EditUserAccountDetails().setVisible(true);
-            }
-        });
-    }
+    private void dontsave_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dontsave_btnActionPerformed
+        dispose();
+    }//GEN-LAST:event_dontsave_btnActionPerformed
+
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(EditUserAccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new EditUserAccountDetails().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cust_addr;
@@ -142,10 +203,12 @@ public class EditUserAccountDetails extends javax.swing.JFrame {
     private javax.swing.JTextField cust_fname;
     private javax.swing.JTextField cust_lname;
     private javax.swing.JTextField cust_phone;
+    private javax.swing.JButton dontsave_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton save_btn;
     // End of variables declaration//GEN-END:variables
 }

@@ -77,7 +77,8 @@ public class CustomerMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_view_account_details_btnActionPerformed
 
     private void edit_account_details_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_account_details_btnActionPerformed
-        // TODO add your handling code here:
+        EditUserAccountDetails frame = new EditUserAccountDetails(cust);
+        frame.setVisible(true);
     }//GEN-LAST:event_edit_account_details_btnActionPerformed
 
     /**
