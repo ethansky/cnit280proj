@@ -63,10 +63,10 @@ public class ViewInvoices extends javax.swing.JFrame {
         inv_due_date = new javax.swing.JTextField();
         inv_amount = new javax.swing.JTextField();
         inv_status = new javax.swing.JTextField();
-        pay_invoice = new javax.swing.JButton();
+        pay_invoice_btn = new javax.swing.JButton();
         inv_datepaid = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        refresh_list = new javax.swing.JButton();
+        refresh_list_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Invoices");
@@ -111,21 +111,22 @@ public class ViewInvoices extends javax.swing.JFrame {
         inv_status.setEditable(false);
         inv_status.setColumns(1);
 
-        pay_invoice.setText("Pay Invoice");
-        pay_invoice.addActionListener(new java.awt.event.ActionListener() {
+        pay_invoice_btn.setText("Pay Invoice");
+        pay_invoice_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pay_invoiceActionPerformed(evt);
+                pay_invoice_btnActionPerformed(evt);
             }
         });
 
+        inv_datepaid.setEditable(false);
         inv_datepaid.setColumns(1);
 
         jLabel7.setText("Date Paid");
 
-        refresh_list.setText("Refresh");
-        refresh_list.addActionListener(new java.awt.event.ActionListener() {
+        refresh_list_btn.setText("Refresh");
+        refresh_list_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refresh_listActionPerformed(evt);
+                refresh_list_btnActionPerformed(evt);
             }
         });
 
@@ -137,9 +138,9 @@ public class ViewInvoices extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pay_invoice)
+                        .addComponent(pay_invoice_btn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(refresh_list))
+                        .addComponent(refresh_list_btn))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -198,20 +199,20 @@ public class ViewInvoices extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pay_invoice)
-                    .addComponent(refresh_list))
+                    .addComponent(pay_invoice_btn)
+                    .addComponent(refresh_list_btn))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pay_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_invoiceActionPerformed
+    private void pay_invoice_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_invoice_btnActionPerformed
 //        Invoice curr_inv = invoices.get(last_index);
         if (last_inv != null && last_inv.getStatus().equals("Unpaid")) {
         last_inv.payInvoice();
         }
-    }//GEN-LAST:event_pay_invoiceActionPerformed
+    }//GEN-LAST:event_pay_invoice_btnActionPerformed
 
     private void invoice_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoice_listMouseClicked
         Invoice curr_inv = null;
@@ -229,12 +230,12 @@ public class ViewInvoices extends javax.swing.JFrame {
         inv_status.setText(curr_inv.getStatus());
     }//GEN-LAST:event_invoice_listMouseClicked
 
-    private void refresh_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_listActionPerformed
+    private void refresh_list_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_list_btnActionPerformed
         if (last_inv != null){
             inv_datepaid.setText(last_inv.getDatePaid());
             inv_status.setText(last_inv.getStatus());
         }
-    }//GEN-LAST:event_refresh_listActionPerformed
+    }//GEN-LAST:event_refresh_list_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +289,7 @@ public class ViewInvoices extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton pay_invoice;
-    private javax.swing.JButton refresh_list;
+    private javax.swing.JButton pay_invoice_btn;
+    private javax.swing.JButton refresh_list_btn;
     // End of variables declaration//GEN-END:variables
 }

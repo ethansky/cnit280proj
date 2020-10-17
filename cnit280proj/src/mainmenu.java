@@ -27,7 +27,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         username = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        login_btn = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,8 +35,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         username.setText("Username");
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        login_btn.setText("Login");
+        login_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbuttonpressed(evt);
             }
@@ -57,7 +57,7 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(password)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(jButton1)))
+                        .addComponent(login_btn)))
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,7 +68,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(login_btn)
                 .addGap(102, 102, 102))
         );
 
@@ -78,11 +78,13 @@ public class MainMenu extends javax.swing.JFrame {
     private void loginbuttonpressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonpressed
         // TODO add your handling code here:
         System.out.printf("%s:%s\n", username.getText(), new String(password.getPassword()));
-        if (username.getText().equals("testmanager") && "password".equals(new String(password.getPassword()))) {
+        if (username.getText().equals("manager") && "1234".equals(new String(password.getPassword()))) {
             ManagerMenu frame = new ManagerMenu();
             frame.setVisible(true);
-        } else if (username.getText().equals("testcustomer") && "password".equals(new String(password.getPassword()))){
-            ;
+        } else if (username.getText().equals("johndoe") && "1234".equals(new String(password.getPassword()))){
+            Customer cust = new Customer("0001", "John", "Doe", "1234 Test Street", "10-1-20", "317-803-4883", "John.Doe@gmail.com");
+            CustomerMenu frame = new CustomerMenu(cust);
+            frame.setVisible(true);
         }
     }//GEN-LAST:event_loginbuttonpressed
 
@@ -123,7 +125,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton login_btn;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

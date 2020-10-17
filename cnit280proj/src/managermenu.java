@@ -26,12 +26,12 @@ public class ManagerMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        view_invoices_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("View Invoices");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        view_invoices_btn.setText("View Invoices");
+        view_invoices_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewinvoicebuttonpressed(evt);
             }
@@ -43,14 +43,14 @@ public class ManagerMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(241, 241, 241)
-                .addComponent(jButton1)
+                .addComponent(view_invoices_btn)
                 .addContainerGap(546, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(228, 228, 228)
-                .addComponent(jButton1)
+                .addComponent(view_invoices_btn)
                 .addContainerGap(248, Short.MAX_VALUE))
         );
 
@@ -100,6 +100,6 @@ public class ManagerMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton view_invoices_btn;
     // End of variables declaration//GEN-END:variables
 }
