@@ -78,8 +78,12 @@ public class MainMenu extends javax.swing.JFrame {
     private void loginbuttonpressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonpressed
         // TODO add your handling code here:
         System.out.printf("%s:%s\n", username.getText(), new String(password.getPassword()));
-        ManagerMenu frame = new ManagerMenu();
-        frame.setVisible(true);
+        if (username.getText().equals("testmanager") && "password".equals(new String(password.getPassword()))) {
+            ManagerMenu frame = new ManagerMenu();
+            frame.setVisible(true);
+        } else if (username.getText().equals("testcustomer") && "password".equals(new String(password.getPassword()))){
+            ;
+        }
     }//GEN-LAST:event_loginbuttonpressed
 
     /**

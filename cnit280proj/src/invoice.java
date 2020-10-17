@@ -1,18 +1,21 @@
+import java.util.Date;
 public class Invoice {
     private String id;
     private String supplier;
     private String receivedate;
     private String duedate;
     private double amount;
+    private String datepaid;
     private String status;
 
 
-    public Invoice(String id, String supplier, String receivedate, String duedate, double amount, String status) {
+    public Invoice(String id, String supplier, String receivedate, String duedate, double amount, String datepaid, String status) {
         this.id = id;
         this.supplier = supplier;
         this.receivedate = receivedate;
         this.duedate = duedate;
         this.amount = amount;
+        this.datepaid = datepaid;
         this.status = status;
     }
 
@@ -51,6 +54,10 @@ public class Invoice {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+    
+    public String getDatePaid() {
+        return this.datepaid;
+    }
 
     public String getStatus() {
         return this.status;
@@ -58,6 +65,7 @@ public class Invoice {
 
     public void payInvoice() {
         this.status = "Paid";
+        this.datepaid = java.time.LocalDate.now().toString();
     }
 
 
