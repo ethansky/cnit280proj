@@ -49,7 +49,9 @@ public class ViewInvoices extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        addAllIDs();
+        for (Invoice inv : invoices) {
+            ids.add(inv.getId());
+        }
         invoice_list = new javax.swing.JList(ids.toArray());
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();

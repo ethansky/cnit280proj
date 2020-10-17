@@ -27,7 +27,8 @@ public class ManagerMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         view_invoices_btn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        compare_supplier_products_btn = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -39,22 +40,26 @@ public class ManagerMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Compare Supplier Products");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        compare_supplier_products_btn.setText("Compare Supplier Products");
+        compare_supplier_products_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                compare_supplier_products_btnActionPerformed(evt);
             }
         });
+
+        jButton2.setText("Compile Product Prices");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(view_invoices_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(compare_supplier_products_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -63,8 +68,10 @@ public class ManagerMenu extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(view_invoices_btn)
-                    .addComponent(jButton1))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(compare_supplier_products_btn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,12 +80,12 @@ public class ManagerMenu extends javax.swing.JFrame {
     private void viewinvoicebuttonpressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewinvoicebuttonpressed
         ViewInvoices frame = new ViewInvoices();
         frame.setVisible(true);
-//        this.setVisible(false);
     }//GEN-LAST:event_viewinvoicebuttonpressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void compare_supplier_products_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compare_supplier_products_btnActionPerformed
+        CompareSupplierProducts frame = new CompareSupplierProducts();
+        frame.setVisible(true);
+    }//GEN-LAST:event_compare_supplier_products_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +124,8 @@ public class ManagerMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton compare_supplier_products_btn;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton view_invoices_btn;
     // End of variables declaration//GEN-END:variables
 }

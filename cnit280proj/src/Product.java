@@ -8,9 +8,10 @@ public class Product {
     private double length;
     private double price;
     private String category;
+    private String supplier;
 
 
-    public Product(String id, String name, String description, double weight, double height, double width, double length, double price, String category) {
+    public Product(String id, String name, String description, double weight, double height, double width, double length, double price, String category, String supplier) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,6 +21,7 @@ public class Product {
         this.length = length;
         this.price = price;
         this.category = category;
+        this.supplier = supplier;
     }
 
     public String getId() {
@@ -56,6 +58,9 @@ public class Product {
 
     public String getCategory() {
         return this.category;
+    }
+    public String getSupplier() {
+        return this.supplier;
     }
 
     @Override
