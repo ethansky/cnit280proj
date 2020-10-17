@@ -28,7 +28,7 @@ public class ManagerMenu extends javax.swing.JFrame {
 
         view_invoices_btn = new javax.swing.JButton();
         compare_supplier_products_btn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        compile_product_prices_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -47,7 +47,12 @@ public class ManagerMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Compile Product Prices");
+        compile_product_prices_btn.setText("Compile Product Prices");
+        compile_product_prices_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compile_product_prices_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,7 +63,7 @@ public class ManagerMenu extends javax.swing.JFrame {
                 .addComponent(view_invoices_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(compile_product_prices_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(compare_supplier_products_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
         );
@@ -70,7 +75,7 @@ public class ManagerMenu extends javax.swing.JFrame {
                     .addComponent(view_invoices_btn)
                     .addComponent(compare_supplier_products_btn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(compile_product_prices_btn)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -86,6 +91,11 @@ public class ManagerMenu extends javax.swing.JFrame {
         CompareSupplierProducts frame = new CompareSupplierProducts();
         frame.setVisible(true);
     }//GEN-LAST:event_compare_supplier_products_btnActionPerformed
+
+    private void compile_product_prices_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compile_product_prices_btnActionPerformed
+        CompileProductPrices frame = new CompileProductPrices();
+        frame.setVisible(true);
+    }//GEN-LAST:event_compile_product_prices_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,7 +135,7 @@ public class ManagerMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton compare_supplier_products_btn;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton compile_product_prices_btn;
     private javax.swing.JButton view_invoices_btn;
     // End of variables declaration//GEN-END:variables
 }

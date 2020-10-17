@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,8 +16,37 @@ public class CompileProductPrices extends javax.swing.JFrame {
     /**
      * Creates new form CompileProductPrices
      */
+    private ArrayList<String> prod_names;
+    private ArrayList<Product> prods;
+    private double supp1total;
+    private double supp2total;
+    
     public CompileProductPrices() {
+        supp1total = 0.0; // Boston
+        supp2total = 0.0; // Winter
+        prods = new ArrayList<>();
+        prods.add(new Product("0001", "Foam Roller", "Cylinder made of foam for massaging the body", 2, 4.5, 2.5, 24, 25, "Massage", "Boston Fitness Supplies"));
+        prods.add(new Product("0002", "Foam Roller", "Cylinder made of foam for massaging the body", 1.8, 4, 3, 18, 18, "Massage", "Winter Gear Distributers"));
+        prods.add(new Product("0003", "5lb Dumbbell", "5lb neoprene dumbbell", 5, 2.76, 2.75, 7.5, 13, "Weights", "Boston Fitness Supplies"));
+        prods.add(new Product("0004", "5lb Dumbbell", "5lb neoprene dumbbell", 5, 2.76, 2.5, 7.33, 15, "Weights", "Winter Gear Distributers"));
+        prods.add(new Product("0005", "Resistance bands", "Set of 5 resistance bands", 0.25, 0.3, 2.5, 12, 11.89, "Resistance Bands", "Boston Fitness Supplies"));
+        prods.add(new Product("0006", "Resistance bands", "Set of 3 resistance bands", 0.25, 0.3, 2.5, 12, 7.99, "Resistance Bands", "Winter Gear Distributers"));
+        prod_names = new ArrayList<>();
+        prod_names.add("Foam Roller");
+        prod_names.add("5lb Dumbbell");
+        prod_names.add("Resistance Bands");
         initComponents();
+    }
+    
+    public void addPrice(double p1, double p2){
+        supp1total += p1;
+        supp2total += p2;
+        System.out.printf("%f, %f\n", supp1total, supp2total);
+    }
+    
+    public void resetPrice(){
+        supp1total = 0;
+        supp2total = 0;
     }
 
     /**
@@ -26,21 +58,87 @@ public class CompileProductPrices extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        prod_list = new javax.swing.JList(prod_names.toArray());
+        compare_item_btn = new javax.swing.JButton();
+        finish_list_btn = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        prod_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(prod_list);
+
+        compare_item_btn.setText("Compare Item");
+        compare_item_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compare_item_btnActionPerformed(evt);
+            }
+        });
+
+        finish_list_btn.setText("Finish List");
+        finish_list_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finish_list_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(finish_list_btn)
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(compare_item_btn)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(compare_item_btn)
+                        .addGap(18, 18, 18)
+                        .addComponent(finish_list_btn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void compare_item_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compare_item_btnActionPerformed
+        System.out.println(prod_list.getSelectedValue());
+        if (prod_list.getSelectedValue() != null) {
+            String prodname = prod_list.getSelectedValue();
+            if (prodname.equalsIgnoreCase("Foam Roller")){
+                CompareProductPrice frame = new CompareProductPrice(prods.get(0), prods.get(1), this);
+                frame.setVisible(true);
+            } else if (prodname.equalsIgnoreCase("5lb Dumbbell")){
+                CompareProductPrice frame = new CompareProductPrice(prods.get(2), prods.get(3), this);
+                frame.setVisible(true);
+            } else {
+                CompareProductPrice frame = new CompareProductPrice(prods.get(4), prods.get(5), this);
+                frame.setVisible(true);
+            }
+        }
+        
+    }//GEN-LAST:event_compare_item_btnActionPerformed
+
+    private void finish_list_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finish_list_btnActionPerformed
+        FinishedList frame = new FinishedList(this, supp1total, supp2total);
+        frame.setVisible(true);
+    }//GEN-LAST:event_finish_list_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +176,9 @@ public class CompileProductPrices extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton compare_item_btn;
+    private javax.swing.JButton finish_list_btn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> prod_list;
     // End of variables declaration//GEN-END:variables
 }

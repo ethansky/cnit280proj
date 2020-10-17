@@ -43,7 +43,7 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        product_list = new javax.swing.JList(prod_names.toArray());
+        prod_list = new javax.swing.JList(prod_names.toArray());
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -85,15 +85,15 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
         right_category = new javax.swing.JTextField();
         left_description = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        product_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        product_list.addMouseListener(new java.awt.event.MouseAdapter() {
+        prod_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        prod_list.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                product_listMouseClicked(evt);
+                prod_listMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(product_list);
+        jScrollPane1.setViewportView(prod_list);
 
         jLabel1.setText("Product ID");
 
@@ -348,8 +348,8 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void product_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_product_listMouseClicked
-        if (product_list.getSelectedValue().equalsIgnoreCase("5lb Dumbbell")){
+    private void prod_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod_listMouseClicked
+        if (prod_list.getSelectedValue().equalsIgnoreCase("5lb Dumbbell")){
             Product l = prods.get(2);
             left_supplier.setText(l.getSupplier());
             left_id.setText(l.getId());
@@ -373,7 +373,7 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
             right_length.setText("" + r.getLength());
             right_price.setText("$" + r.getPrice());
             right_category.setText(r.getCategory());
-        } else if(product_list.getSelectedValue().equalsIgnoreCase("Foam Roller")){
+        } else if(prod_list.getSelectedValue().equalsIgnoreCase("Foam Roller")){
             Product l = prods.get(0);
             left_supplier.setText(l.getSupplier());
             left_id.setText(l.getId());
@@ -397,7 +397,7 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
             right_length.setText("" + r.getLength());
             right_price.setText("$" + r.getPrice());
             right_category.setText(r.getCategory());
-        } else if(product_list.getSelectedValue().equalsIgnoreCase("Resistance Bands")){
+        } else if(prod_list.getSelectedValue().equalsIgnoreCase("Resistance Bands")){
             Product l = prods.get(4);
             left_supplier.setText(l.getSupplier());
             left_id.setText(l.getId());
@@ -422,7 +422,7 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
             right_price.setText("$" + r.getPrice());
             right_category.setText(r.getCategory());
         }
-    }//GEN-LAST:event_product_listMouseClicked
+    }//GEN-LAST:event_prod_listMouseClicked
 
     /**
      * @param args the command line arguments
@@ -492,7 +492,7 @@ public class CompareSupplierProducts extends javax.swing.JFrame {
     private javax.swing.JTextField left_supplier;
     private javax.swing.JTextField left_weight;
     private javax.swing.JTextField left_width;
-    private javax.swing.JList<String> product_list;
+    private javax.swing.JList<String> prod_list;
     private javax.swing.JTextField right_category;
     private javax.swing.JTextField right_description;
     private javax.swing.JTextField right_height;

@@ -29,7 +29,7 @@
               <Component id="view_invoices_btn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="48" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton2" max="32767" attributes="0"/>
+                  <Component id="compile_product_prices_btn" max="32767" attributes="0"/>
                   <Component id="compare_supplier_products_btn" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -45,7 +45,7 @@
                   <Component id="compare_supplier_products_btn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="compile_product_prices_btn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -68,10 +68,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compare_supplier_products_btnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="compile_product_prices_btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Compile Product Prices"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compile_product_prices_btnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
