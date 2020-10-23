@@ -1,4 +1,3 @@
-import java.util.Date;
 public class Invoice {
     private String id;
     private String supplier;
