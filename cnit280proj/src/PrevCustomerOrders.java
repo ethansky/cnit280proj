@@ -22,26 +22,11 @@ public class PrevCustomerOrders extends javax.swing.JFrame {
     private int counter;
     private ArrayList<Order> order_array;
     
-    public PrevCustomerOrders() {
+    public PrevCustomerOrders(ArrayList ord_arr, DefaultListModel ord_dlm) {
+        order_array = ord_arr;
+        olm = ord_dlm;
         plm = new DefaultListModel();
-        olm = new DefaultListModel();
-        olm.addElement("0001");
-        olm.addElement("0002");
-        olm.addElement("0003");
         counter = 4;
-        order_array = new ArrayList<>();
-        order_array.add(new Order("0001", "10-5-20", "90084312020"));
-        order_array.get(0).addProduct("Foam Roller");
-        order_array.get(0).addProduct("Foam Roller");
-        order_array.get(0).addProduct("Resistance bands");
-        
-        order_array.add(new Order("0002", "10-2-20", "AS424891767CN"));
-        order_array.get(1).addProduct("5lb Dumbbell");
-        order_array.get(1).addProduct("5lb Dumbbell");
-        
-        order_array.add(new Order("0003", "10-6-20", "01005952112"));
-        order_array.get(2).addProduct("Foam Roller");
-        order_array.get(2).addProduct("Resistance bands");
         initComponents();
     }
 

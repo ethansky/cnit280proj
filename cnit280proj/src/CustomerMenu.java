@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,7 +8,7 @@
 
 /**
  *
- * @author Ethan - God Tier
+ * @author Ethan Emmons
  */
 public class CustomerMenu extends javax.swing.JFrame {
 
@@ -14,7 +16,27 @@ public class CustomerMenu extends javax.swing.JFrame {
      * Creates new form CustomerMenu
      */
     private Customer cust;
+    private ArrayList<Order> ord_arr;
+    private DefaultListModel ord_dlm;
     public CustomerMenu(Customer cust) {
+        ord_dlm = new DefaultListModel();
+        ord_dlm.addElement("0001");
+        ord_dlm.addElement("0002");
+        ord_dlm.addElement("0003");
+        
+        ord_arr = new ArrayList<>();
+        ord_arr.add(new Order("0001", "10-5-20", "90084312020"));
+        ord_arr.get(0).addProduct("Foam Roller");
+        ord_arr.get(0).addProduct("Foam Roller");
+        ord_arr.get(0).addProduct("Resistance bands");
+        
+        ord_arr.add(new Order("0002", "10-2-20", "AS424891767CN"));
+        ord_arr.get(1).addProduct("5lb Dumbbell");
+        ord_arr.get(1).addProduct("5lb Dumbbell");
+        
+        ord_arr.add(new Order("0003", "10-6-20", "01005952112"));
+        ord_arr.get(2).addProduct("Foam Roller");
+        ord_arr.get(2).addProduct("Resistance bands");
         this.cust = cust;
         initComponents();
     }
@@ -31,6 +53,7 @@ public class CustomerMenu extends javax.swing.JFrame {
         view_account_details_btn = new javax.swing.JButton();
         edit_account_details_btn = new javax.swing.JButton();
         view_prev_orders_btn = new javax.swing.JButton();
+        return_product_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -56,30 +79,40 @@ public class CustomerMenu extends javax.swing.JFrame {
             }
         });
 
+        return_product_btn.setText("Return Product");
+        return_product_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                return_product_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(view_prev_orders_btn)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(view_account_details_btn)
-                        .addGap(32, 32, 32)
-                        .addComponent(edit_account_details_btn)))
-                .addGap(41, 41, 41))
+                    .addComponent(view_account_details_btn)
+                    .addComponent(view_prev_orders_btn))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(edit_account_details_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(return_product_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(view_account_details_btn)
                     .addComponent(edit_account_details_btn))
                 .addGap(18, 18, 18)
-                .addComponent(view_prev_orders_btn)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(view_prev_orders_btn)
+                    .addComponent(return_product_btn))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,9 +129,14 @@ public class CustomerMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_edit_account_details_btnActionPerformed
 
     private void view_prev_orders_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_prev_orders_btnActionPerformed
-        PrevCustomerOrders frame = new PrevCustomerOrders();
+        PrevCustomerOrders frame = new PrevCustomerOrders(ord_arr, ord_dlm);
         frame.setVisible(true);
     }//GEN-LAST:event_view_prev_orders_btnActionPerformed
+
+    private void return_product_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_return_product_btnActionPerformed
+        ReturnProduct frame = new ReturnProduct(ord_arr, ord_dlm);
+        frame.setVisible(true);
+    }//GEN-LAST:event_return_product_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +175,7 @@ public class CustomerMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton edit_account_details_btn;
+    private javax.swing.JButton return_product_btn;
     private javax.swing.JButton view_account_details_btn;
     private javax.swing.JButton view_prev_orders_btn;
     // End of variables declaration//GEN-END:variables
