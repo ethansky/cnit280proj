@@ -5,16 +5,16 @@ import javax.swing.DefaultListModel;
  * @author Ethan Emmons
  */
 public class PrevCustomerOrders extends javax.swing.JFrame {
-    private DefaultListModel plm;
-    private DefaultListModel olm;
+    private DefaultListModel prod_dlm;
+    private DefaultListModel ord_dlm;
     private int counter;
-    private ArrayList<Order> order_array;
+    private ArrayList<Order> ord_arr;
     
     public PrevCustomerOrders(ArrayList ord_arr, DefaultListModel ord_dlm) {
-        order_array = ord_arr;
-        olm = ord_dlm;
-        plm = new DefaultListModel();
-        counter = 4;
+        this.ord_arr = ord_arr;
+        this.ord_dlm = ord_dlm;
+        this.prod_dlm = new DefaultListModel();
+        this.counter = 4;
         initComponents();
     }
 
@@ -28,13 +28,13 @@ public class PrevCustomerOrders extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        order_id_list = new javax.swing.JList(olm);
+        order_id_list = new javax.swing.JList(ord_dlm);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        products_ordered = new javax.swing.JList(plm);
+        products_ordered = new javax.swing.JList(prod_dlm);
         id_fld = new javax.swing.JTextField();
         ordered_fld = new javax.swing.JTextField();
         tracking_fld = new javax.swing.JTextField();
@@ -130,14 +130,14 @@ public class PrevCustomerOrders extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void order_id_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_order_id_listMouseClicked
-        plm.removeAllElements();
-        for (Order o : order_array){
+        prod_dlm.removeAllElements();
+        for (Order o : ord_arr){
             if (order_id_list.getSelectedValue().equalsIgnoreCase(o.getOrderId())){
                 id_fld.setText(o.getOrderId());
                 ordered_fld.setText(o.getDateOrdered());
                 tracking_fld.setText(o.getTrackingNumber());
                 for (String s : o.getProducts()){
-                    plm.addElement(s);
+                    prod_dlm.addElement(s);
                 }
             }
         }
@@ -146,18 +146,18 @@ public class PrevCustomerOrders extends javax.swing.JFrame {
     private void order_again_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order_again_btnActionPerformed
         String currid = "";
         if (counter > 9){
-            olm.addElement("00" + counter);
+            ord_dlm.addElement("00" + counter);
             currid = "00" + counter;
         } else {
-            olm.addElement("000" + counter);
+            ord_dlm.addElement("000" + counter);
             currid = "000" + counter;
         }
-        for (int i = 0; i < order_array.size(); i++){
-            Order prod_itr = order_array.get(i);
+        for (int i = 0; i < ord_arr.size(); i++){
+            Order prod_itr = ord_arr.get(i);
             if (prod_itr.getOrderId().equalsIgnoreCase(order_id_list.getSelectedValue())){
-                order_array.add(new Order(currid, java.time.LocalDate.now().toString(), "" + ((long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L)));
+                ord_arr.add(new Order(currid, java.time.LocalDate.now().toString(), "" + ((long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L)));
                 for (String s : prod_itr.getProducts()){
-                    order_array.get(order_array.size() - 1).addProduct(s);
+                    ord_arr.get(ord_arr.size() - 1).addProduct(s);
                 }
             }
         }

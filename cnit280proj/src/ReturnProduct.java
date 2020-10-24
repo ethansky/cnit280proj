@@ -7,14 +7,16 @@ import java.util.Random;
  */
 public class ReturnProduct extends javax.swing.JFrame {
     private class ProductReturnable {
+        private int ret_id;
+        private String ord_id;
         private String prod;
         private boolean isReturnable;
         
-        public ProductReturnable(String prod, boolean isReturnable){
+        public ProductReturnable(int ret_id, String ord_id, String prod, boolean isReturnable){
+            this.ord_id = ord_id;
             this.prod = prod;
             this.isReturnable = isReturnable;
         }
-        
         public void setReturnable(boolean bool) {
             this.isReturnable = bool;
         }
@@ -25,18 +27,30 @@ public class ReturnProduct extends javax.swing.JFrame {
             return this.prod;
         }
         
+        public String getOrderId() {
+            return this.ord_id;
+        }
+        
+        public int getRetId(){
+            return this.ret_id;
+        }
+        
     }
     private ArrayList<Order> ord_arr;
     private ArrayList<ProductReturnable> ret_arr;
     private DefaultListModel ord_dlm;
+    private DefaultListModel prod_dlm;
     public ReturnProduct(ArrayList ord_arr, DefaultListModel ord_dlm) {
         this.ord_arr = ord_arr;
         this.ord_dlm = ord_dlm;
+        this.prod_dlm = new DefaultListModel();
         this.ret_arr = new ArrayList<>();
+        int ret_counter = 0;
         Random rd = new Random();
         for(Order ord : this.ord_arr) {
             for(String prod : ord.getProducts()) {
-                this.ret_arr.add(new ProductReturnable(prod, rd.nextBoolean()));
+                ret_counter++;
+                this.ret_arr.add(new ProductReturnable(ret_counter, ord.getOrderId(), prod, rd.nextBoolean()));                
             }
         }
         initComponents();
@@ -52,76 +66,121 @@ public class ReturnProduct extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList(ord_dlm);
+        ord_id_list = new javax.swing.JList(ord_dlm);
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jTextField1 = new javax.swing.JTextField();
+        prod_name_list = new javax.swing.JList(prod_dlm);
+        is_returnable_field = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jList1);
+        ord_id_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ord_id_list.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ord_id_listMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(ord_id_list);
 
         jButton1.setText("Return");
 
-        jList2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(jList2);
+        prod_name_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        prod_name_list.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prod_name_listMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(prod_name_list);
 
-        jTextField1.setEditable(false);
-        jTextField1.setColumns(1);
+        is_returnable_field.setEditable(false);
+        is_returnable_field.setColumns(1);
 
         jLabel1.setText("Returnable?");
+
+        jTextField1.setEditable(false);
+        jTextField1.setText("Orders");
+
+        jTextField2.setEditable(false);
+        jTextField2.setText("Products");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(is_returnable_field)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 28, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(31, 31, 31))))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(36, 36, 36))))
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(is_returnable_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(59, 59, 59)))
+                        .addComponent(jButton1)))
                 .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ord_id_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ord_id_listMouseClicked
+        prod_dlm.removeAllElements();
+        for (ProductReturnable prod_ret : ret_arr) {
+            System.out.println(prod_ret.getRetId() + ":" + prod_ret.getProd());
+            if (prod_ret.getOrderId() == ord_id_list.getSelectedValue()) {
+                prod_dlm.addElement("" + prod_ret.getRetId());
+            }
+        }
+    }//GEN-LAST:event_ord_id_listMouseClicked
+
+    private void prod_name_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod_name_listMouseClicked
+        System.out.println(prod_name_list.getSelectedValue());
+    }//GEN-LAST:event_prod_name_listMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField is_returnable_field;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JList<String> ord_id_list;
+    private javax.swing.JList<String> prod_name_list;
     // End of variables declaration//GEN-END:variables
 }
