@@ -13,6 +13,7 @@ public class ReturnProduct extends javax.swing.JFrame {
         private boolean isReturnable;
         
         public ProductReturnable(int ret_id, String ord_id, String prod, boolean isReturnable){
+            this.ret_id = ret_id;
             this.ord_id = ord_id;
             this.prod = prod;
             this.isReturnable = isReturnable;
@@ -35,6 +36,10 @@ public class ReturnProduct extends javax.swing.JFrame {
             return this.ret_id;
         }
         
+        public String toString(){
+            return this.prod;
+        }
+        
     }
     private ArrayList<Order> ord_arr;
     private ArrayList<ProductReturnable> ret_arr;
@@ -49,8 +54,8 @@ public class ReturnProduct extends javax.swing.JFrame {
         Random rd = new Random();
         for(Order ord : this.ord_arr) {
             for(String prod : ord.getProducts()) {
+                this.ret_arr.add(new ProductReturnable(ret_counter, ord.getOrderId(), prod, rd.nextBoolean()));
                 ret_counter++;
-                this.ret_arr.add(new ProductReturnable(ret_counter, ord.getOrderId(), prod, rd.nextBoolean()));                
             }
         }
         initComponents();
@@ -67,13 +72,13 @@ public class ReturnProduct extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         ord_id_list = new javax.swing.JList(ord_dlm);
-        jButton1 = new javax.swing.JButton();
+        ret_prod_btn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         prod_name_list = new javax.swing.JList(prod_dlm);
         is_returnable_field = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        ord_field = new javax.swing.JTextField();
+        prod_field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,7 +90,12 @@ public class ReturnProduct extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ord_id_list);
 
-        jButton1.setText("Return");
+        ret_prod_btn.setText("Return");
+        ret_prod_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ret_prod_btnActionPerformed(evt);
+            }
+        });
 
         prod_name_list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         prod_name_list.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,11 +110,11 @@ public class ReturnProduct extends javax.swing.JFrame {
 
         jLabel1.setText("Returnable?");
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("Orders");
+        ord_field.setEditable(false);
+        ord_field.setText("Orders");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Products");
+        prod_field.setEditable(false);
+        prod_field.setText("Products");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,11 +124,11 @@ public class ReturnProduct extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ord_field, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                    .addComponent(prod_field, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -128,7 +138,7 @@ public class ReturnProduct extends javax.swing.JFrame {
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 28, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(ret_prod_btn)
                                 .addGap(31, 31, 31))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,8 +150,8 @@ public class ReturnProduct extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ord_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prod_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
@@ -151,7 +161,7 @@ public class ReturnProduct extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(is_returnable_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(ret_prod_btn)))
                 .addGap(57, 57, 57))
         );
 
@@ -159,28 +169,37 @@ public class ReturnProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ord_id_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ord_id_listMouseClicked
-        prod_dlm.removeAllElements();
-        for (ProductReturnable prod_ret : ret_arr) {
-            System.out.println(prod_ret.getRetId() + ":" + prod_ret.getProd());
+        this.prod_dlm.removeAllElements();
+        for (ProductReturnable prod_ret : this.ret_arr) {
             if (prod_ret.getOrderId() == ord_id_list.getSelectedValue()) {
-                prod_dlm.addElement("" + prod_ret.getRetId());
+                prod_dlm.addElement(prod_ret);
             }
         }
     }//GEN-LAST:event_ord_id_listMouseClicked
 
     private void prod_name_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prod_name_listMouseClicked
-        System.out.println(prod_name_list.getSelectedValue());
+        is_returnable_field.setText("" + prod_name_list.getSelectedValue().getReturnable());
     }//GEN-LAST:event_prod_name_listMouseClicked
+
+    private void ret_prod_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ret_prod_btnActionPerformed
+        if(prod_name_list.getSelectedValue().getReturnable()){
+            ProductReturnTrue frame = new ProductReturnTrue();
+            frame.setVisible(true);
+        } else {
+            ProductReturnFalse frame = new ProductReturnFalse();
+            frame.setVisible(true);
+        }
+    }//GEN-LAST:event_ret_prod_btnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField is_returnable_field;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField ord_field;
     private javax.swing.JList<String> ord_id_list;
-    private javax.swing.JList<String> prod_name_list;
+    private javax.swing.JTextField prod_field;
+    private javax.swing.JList<ProductReturnable> prod_name_list;
+    private javax.swing.JButton ret_prod_btn;
     // End of variables declaration//GEN-END:variables
 }

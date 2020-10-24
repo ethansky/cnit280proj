@@ -1,18 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
  * @author fragg
  */
 public class MainMenu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form mainmenu
-     */
     public MainMenu() {
         initComponents();
     }
@@ -77,14 +66,17 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginbuttonpressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonpressed
-        // TODO add your handling code here:
-        System.out.printf("%s:%s\n", username.getText(), new String(password.getPassword()));
-        if (username.getText().equalsIgnoreCase("manager") && "1234".equals(new String(password.getPassword()))) {
+        String uname = username.getText();
+        String pass = new String(password.getPassword());
+        if (uname.equalsIgnoreCase("manager") && "1234".equals(pass)) {
             ManagerMenu frame = new ManagerMenu();
             frame.setVisible(true);
-        } else if (username.getText().equalsIgnoreCase("johndoe") && "1234".equals(new String(password.getPassword()))){
+        } else if (uname.equalsIgnoreCase("johndoe") && "1234".equals(pass)){
             Customer cust = new Customer("0001", "John", "Doe", "1234 Test Street", "10-1-20", "317-803-4883", "John.Doe@gmail.com");
             CustomerMenu frame = new CustomerMenu(cust);
+            frame.setVisible(true);
+        } else if(uname.equalsIgnoreCase("csrep") && "1234".equals(pass)){
+            CustServRepMenu frame = new CustServRepMenu();
             frame.setVisible(true);
         }
     }//GEN-LAST:event_loginbuttonpressed
