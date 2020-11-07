@@ -1,5 +1,5 @@
 /*
- * @author fragg
+ * @author Ethan Emmons
  */
 public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
@@ -77,6 +77,9 @@ public class MainMenu extends javax.swing.JFrame {
             frame.setVisible(true);
         } else if(uname.equalsIgnoreCase("csrep") && "1234".equals(pass)){
             CustServRepMenu frame = new CustServRepMenu();
+            frame.setVisible(true);
+        } else if (uname.equalsIgnoreCase("employee") && "1234".equals(pass)){
+            EmployeeMenu frame = new EmployeeMenu();
             frame.setVisible(true);
         }
     }//GEN-LAST:event_loginbuttonpressed
