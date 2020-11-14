@@ -27,6 +27,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="cust_email_lbl" min="-2" max="-2" attributes="0"/>
                   <Component id="cust_phone_lbl" min="-2" max="-2" attributes="0"/>
                   <Component id="cust_join_date_lbl" min="-2" max="-2" attributes="0"/>
@@ -44,8 +45,9 @@
                   <Component id="cust_join_date" alignment="0" max="32767" attributes="0"/>
                   <Component id="cust_phone" alignment="0" max="32767" attributes="0"/>
                   <Component id="cust_email" alignment="0" max="32767" attributes="0"/>
+                  <Component id="payment_method_fld" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,7 +89,12 @@
                   <Component id="cust_email_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cust_email" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="payment_method_fld" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -169,6 +176,16 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="columns" type="int" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Payment Method"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="payment_method_fld">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

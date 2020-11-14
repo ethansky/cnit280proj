@@ -13,6 +13,7 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
         cust_join_date.setText(cust.getAddress());
         cust_phone.setText(cust.getPhone());
         cust_email.setText(cust.getEmail());
+        payment_method_fld.setText(cust.getPaymentMethod());
     }
 
     /**
@@ -38,6 +39,8 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
         cust_join_date = new javax.swing.JTextField();
         cust_phone = new javax.swing.JTextField();
         cust_email = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        payment_method_fld = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -78,6 +81,10 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
         cust_email.setEditable(false);
         cust_email.setColumns(1);
 
+        jLabel1.setText("Payment Method");
+
+        payment_method_fld.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,6 +92,7 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addComponent(cust_email_lbl)
                     .addComponent(cust_phone_lbl)
                     .addComponent(cust_join_date_lbl)
@@ -100,8 +108,9 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
                     .addComponent(cust_addr)
                     .addComponent(cust_join_date)
                     .addComponent(cust_phone)
-                    .addComponent(cust_email))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(cust_email)
+                    .addComponent(payment_method_fld))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +143,11 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cust_email_lbl)
                     .addComponent(cust_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(payment_method_fld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,5 +168,7 @@ public class ViewUserAccountDetails extends javax.swing.JFrame {
     private javax.swing.JLabel cust_lname_lbl;
     private javax.swing.JTextField cust_phone;
     private javax.swing.JLabel cust_phone_lbl;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField payment_method_fld;
     // End of variables declaration//GEN-END:variables
 }

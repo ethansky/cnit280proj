@@ -5,10 +5,6 @@ import javax.swing.DefaultListModel;
  * @author Ethan Emmons
  */
 public class CustomerMenu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form CustomerMenu
-     */
     private Customer cust;
     private ArrayList<Order> ord_arr;
     private DefaultListModel ord_dlm;
@@ -48,6 +44,8 @@ public class CustomerMenu extends javax.swing.JFrame {
         edit_account_details_btn = new javax.swing.JButton();
         view_prev_orders_btn = new javax.swing.JButton();
         return_product_btn = new javax.swing.JButton();
+        view_active_orders_btn = new javax.swing.JButton();
+        view_warehouse_stock_btn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -81,7 +79,21 @@ public class CustomerMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("View Active Orders");
+        view_active_orders_btn.setText("View Active Orders");
+        view_active_orders_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                view_active_orders_btnActionPerformed(evt);
+            }
+        });
+
+        view_warehouse_stock_btn.setText("View Warehouse Stock");
+        view_warehouse_stock_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                view_warehouse_stock_btnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Select Preferred Payment Method");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -92,18 +104,20 @@ public class CustomerMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(view_account_details_btn)
-                    .addComponent(view_prev_orders_btn))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(view_active_orders_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(view_account_details_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(view_prev_orders_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(edit_account_details_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(return_product_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(return_product_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(view_warehouse_stock_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(80, 80, 80)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -119,8 +133,12 @@ public class CustomerMenu extends javax.swing.JFrame {
                     .addComponent(view_prev_orders_btn)
                     .addComponent(return_product_btn))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(view_active_orders_btn)
+                    .addComponent(view_warehouse_stock_btn))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,8 +164,18 @@ public class CustomerMenu extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_return_product_btnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void view_active_orders_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_active_orders_btnActionPerformed
         CustomerActiveOrders frame = new CustomerActiveOrders();
+        frame.setVisible(true);
+    }//GEN-LAST:event_view_active_orders_btnActionPerformed
+
+    private void view_warehouse_stock_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_warehouse_stock_btnActionPerformed
+        CustViewWarehouseStock frame = new CustViewWarehouseStock(this.cust);
+        frame.setVisible(true);
+    }//GEN-LAST:event_view_warehouse_stock_btnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CustPaymentMethod frame = new CustPaymentMethod(cust);
         frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -156,6 +184,8 @@ public class CustomerMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton return_product_btn;
     private javax.swing.JButton view_account_details_btn;
+    private javax.swing.JButton view_active_orders_btn;
     private javax.swing.JButton view_prev_orders_btn;
+    private javax.swing.JButton view_warehouse_stock_btn;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ public class Customer {
     private String joindate;
     private String phone;
     private String email;
+    private String payment_method;
 
     public Customer(String id, String fname, String lname, String address, String joindate, String phone, String email) {
         this.id = id;
@@ -15,6 +16,7 @@ public class Customer {
         this.joindate = joindate;
         this.phone = phone;
         this.email = email;
+        this.payment_method = "Cash";
     }
 
     public String getId() {
@@ -67,6 +69,14 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getPaymentMethod() {
+        return this.payment_method;
+    }
+    
+    public void setPaymentMethod(String payment_method){
+        this.payment_method = payment_method;
     }
 
 }
